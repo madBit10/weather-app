@@ -6,6 +6,7 @@ import LoadingIndicator from './components/LoadingIndicator';
 import ErrorMessage from './components/ErrorMsg';
 import WeatherInfo from './components/WeatherInfo';
 
+
 function WeatherApp() {
   const [input, setInput] = useState('');
   const [weather, setWeather] = useState({
@@ -49,7 +50,10 @@ function WeatherApp() {
       setInput('');
       setWeather({...weather, loading: true});
       const url = 'https://api.openweathermap.org/data/2.5/weather'
-      const api_key = '3c2ff04086827e8411a05e5242285be5'
+      const api_key = process.env.REACT_APP_WEATHERAPP_API_KEY;
+      
+      
+      
       await axios.get(url, {
         params: {
           q: input,
